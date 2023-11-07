@@ -1,125 +1,162 @@
-import React from "react";
-import AuthNavbar from "pages/Frontend/Components/AuthNavbar/AuthNavbar";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
-function Signout() {
+export default function Signup() {
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required('Full Name is required'),
+    username: Yup.string().required('Username is required'),
+    countryCode: Yup.string().required('Country Code is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    phoneNumber: Yup.string()
+      .matches(/^[0-9]+$/, 'Phone number must contain only digits')
+      .min(6, 'Phone number must be at least 6 digits')
+      .required('Phone Number is required'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: '',
+      username: '',
+      countryCode: '',
+      email: '',
+      phoneNumber: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log('Form values submitted:', values);
+    },
+  });
+
   return (
-    <div className="mx-au px-4 gap-[30px]">
-      <div className="lg:flex lg:flex-wrap">
-        <div className="lg:w-1/2 lg:fixed ">
-          <div className="flex flex-col lg:ml-60 lg:text-left text-center gap-7 lg:pt-64 ">
-            <h1 className="text-[60px] font-semibold text-[#BF1017]">SellOut</h1>
-            <p className="text-2xl text-slate-600">
-              SellOut helps you sell the stuff you want to the people you want.
-            </p>
-          </div>
+    <section className="text-gray-600 body-font lg:mx-[20vh] mx-[5px] md:mx-[20px]">
+      <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+          <h1 className="font-[700] text-[60px] text-[#BF1017]">SellOut</h1>
+          <p className="leading-relaxed mt-2 w-[80%]">
+            SellOut helps you sell the stuff you want to the people you want.
+          </p>
         </div>
-        <div className="w-full lg:w-1/2 mt-20 lg:mt-40 lg:ml-auto lg:shadow-none shadow-md py-5 rounded-xl">
-          <div className="responsive-inputs">
-            <form>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 font-medium text-gray-900 dark:text-white text-xl text-slate-600"
-                >
-                  Full name:
-                </label>
-                <input
-                  type="text"
-                  id="fname"
-                  className="border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 font-medium text-gray-900 dark:text-white text-xl text-slate-600"
-                >
-                  Username:
-                </label>
-                <input
-                  type="email"
-                  id=""
-                  className="border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
+        <div className="lg:w-2/6 md:w-1/2 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+          <form onSubmit={formik.handleSubmit}>
+            <div className="relative mb-4">
+              <label htmlFor="fullName" className="leading-7 text-sm text-gray-600">
+                Full Name:
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                className={`w-full bg-white rounded border ${
+                  formik.errors.fullName ? 'border-red-500' : 'border-gray-300'
+                } focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                value={formik.values.fullName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.fullName && formik.errors.fullName && (
+                <p className="text-red-500 text-xs mt-1">{formik.errors.fullName}</p>
+              )}
+            </div>
 
-              <div className="mb-6 ">
-                <label
-                  htmlFor="password"
-                  className="block mb-2 font-medium text-gray-900 dark:text-white text-xl text-slate-600"
-                >
-                  Mobile number:
-                </label>
-                <select
-                  id="country-code"
-                  className=" text-center border border-gray-300 text-gray-900 text-base rounded-lg py-3.5 w-3/12"
-                  required
-                >
-                  <option>+569</option>
-                  <option>+92</option>
-                  <option>+91</option>
-                  <option>+970</option>
-                </select>
+            <div className="relative mb-4">
+              <label htmlFor="username" className="leading-7 text-sm text-gray-600">
+                Username:
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                className={`w-full bg-white rounded border ${
+                  formik.errors.username ? 'border-red-500' : 'border-gray-300'
+                } focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                value={formik.values.username}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.username && formik.errors.username && (
+                <p className="text-red-500 text-xs mt-1">{formik.errors.username}</p>
+              )}
+            </div>
 
-                <input
-                  type="password"
-                  id="password"
-                  className=" border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3.5 width-80 ml-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 font-medium text-gray-900 dark:text-white text-xl text-slate-600"
-                >
-                  E mail adress:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 font-medium text-gray-900 dark:text-white text-xl  text-slate-600"
-                >
-                  Password:
-                </label>
-                <input
-                  type="email"
-                  id="password"
-                  className="border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div className="flex justify-center flex-column">
-                <button
-                  type="submit"
-                  className="text-white bg-maroon bg-[#BF1017] rounded-lg text-sm px-24 py-2 text-center text-lg mt-10 font-semibold"
-                >
-                  Continue
-                </button>
-              </div>
-              <div className="fs-9 text-center text-slate-500 mt-4">
-                By registering you accept{" "}
-                <span className="text-maroon">
-                  Customer Agreement Conditions
-                </span>{" "}
-                and <br />
-                <span className="text-maroon">Privacy Policy</span>
-              </div>
-            </form>
+            <div className="relative mb-4">
+              <label htmlFor="countryCode" className="leading-7 text-sm text-gray-600">
+                Country Code:
+              </label>
+              <input
+                type="text"
+                id="countryCode"
+                name="countryCode"
+                className={`w-full bg-white rounded border ${
+                  formik.errors.countryCode ? 'border-red-500' : 'border-gray-300'
+                } focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                value={formik.values.countryCode}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.countryCode && formik.errors.countryCode && (
+                <p className="text-red-500 text-xs mt-1">{formik.errors.countryCode}</p>
+              )}
+            </div>
+
+            <div className="relative mb-4">
+              <label htmlFor="email" className="leading-7 text-sm text-gray-600">
+                Email:
+              </label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                className={`w-full bg-white rounded border ${
+                  formik.errors.email ? 'border-red-500' : 'border-gray-300'
+                } focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.email && formik.errors.email && (
+                <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>
+              )}
+            </div>
+
+            <div className="relative mb-4">
+              <label htmlFor="phoneNumber" className="leading-7 text-sm text-gray-600">
+                Phone Number:
+              </label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                className={`w-full bg-white rounded border ${
+                  formik.errors.phoneNumber ? 'border-red-500' : 'border-gray-300'
+                } focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out`}
+                value={formik.values.phoneNumber}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                <p className="text-red-500 text-xs mt-1">{formik.errors.phoneNumber}</p>
+              )}
+            </div>
+
+            <div className="text-center mt-10">
+              <button
+                type="submit"
+                className="text-white bg-[#BF1017] border-0 py-2 px-8 focus:outline-none rounded-[8px] w-[60%] text-lg"
+              >
+                Sign up
+              </button>
+            </div>
+          </form>
+
+          <p className="text-xs text-gray-500 mt-10 text-center">Don’t have an account?</p>
+          <div className="text-center mt-5">
+            <button className="text-black bg-transparent border border-black border-1 py-2 px-4 focus:outline-none rounded text-sm w-[60%]">
+              Create an Account
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Signout;
