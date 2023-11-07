@@ -1,12 +1,13 @@
 import React from "react";
+import AuthNavbar from "pages/Frontend/Components/AuthNavbar/AuthNavbar";
 
 function Signout() {
   return (
-    <div className="mx-auto px-4 ">
+    <div className="mx-au px-4 gap-[30px]">
       <div className="lg:flex lg:flex-wrap">
         <div className="lg:w-1/2 lg:fixed ">
           <div className="flex flex-col lg:ml-60 lg:text-left text-center gap-7 lg:pt-64 ">
-            <h1 className="text-6xl  font-semibold text-maroon">SellOut</h1>
+            <h1 className="text-[60px] font-semibold text-[#BF1017]">SellOut</h1>
             <p className="text-2xl text-slate-600">
               SellOut helps you sell the stuff you want to the people you want.
             </p>
@@ -100,7 +101,7 @@ function Signout() {
               <div className="flex justify-center flex-column">
                 <button
                   type="submit"
-                  className="text-white bg-maroon hover:bg-red-800 rounded-lg text-sm px-24 py-2 text-center text-lg mt-10 font-semibold"
+                  className="text-white bg-maroon bg-[#BF1017] rounded-lg text-sm px-24 py-2 text-center text-lg mt-10 font-semibold"
                 >
                   Continue
                 </button>
