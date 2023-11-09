@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 
-const Navbar = () => {
+const Topbar = () => {
 
 
   return (
@@ -42,7 +43,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="flex items-center space-x-8 lg:mt-0 md:mt-0 mt-4 text-center lg:justify-center md:justify-center justify-center md:w-auto lg:w-auto w-[100%]">
+        <Link to={"/settings"} className="flex items-center space-x-8 lg:mt-0 md:mt-0 mt-4 text-center lg:justify-center md:justify-center justify-center md:w-auto lg:w-auto w-[100%]">
           <button className="text-gray-500 bg-[#F2F2F2] p-2 rounded-[8px] hover:text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +82,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <div className="relative">
+          <Link to={'/cart'} className="relative">
             <button className="text-gray-500 bg-[#F2F2F2] p-2 rounded-[8px] hover:text-gray-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -121,10 +122,10 @@ const Navbar = () => {
               </svg>
             </button>
             <div className="bg-red-500 text-white absolute top-0 right-0 rounded-full w-4 h-4 flex items-center justify-center">
-              3
+              0
             </div>
-          </div>
-        </div>
+          </Link>
+        </Link>
       </div>
 
     
@@ -132,4 +133,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Topbar;
