@@ -8,7 +8,7 @@ export default function Myorders() {
     setActiveTab(tab);
   };
   return (
-    <div className="">
+    <div className="mt-[36px]">
       <h2 className="text-[18px] font-[600] mx-5">My orders</h2>
       <div className="flex justify-center items-center gap-4">
         <button
@@ -29,7 +29,7 @@ export default function Myorders() {
           Completed
         </button>
       </div>
-      <div className="h-[60vh] overflow-scroll mt-10 overflow-x-hidden mb-10">
+      <div className="h-[90vh] overflow-scroll mt-10 overflow-x-hidden mb-10">
         {/* Conditional rendering based on the active tab */}
         {activeTab === "myOrders" && (
           <>

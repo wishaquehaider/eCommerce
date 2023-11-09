@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Iconsbar() {
   return (
-    <div className="flex justify-center items-center my-[36px] border-gray-200 border-b">
+    <div className="flex justify-center items-center mt-[36px] border-gray-200 border-b">
       <div className="flex justify-center lg:gap-[20vh] md:gap-[16vh] gap-[6vh] mb-[36px] lg:flex-nowrap md:flex-nowrap flex-wrap">
         <div className="cursor-pointer">
           <svg

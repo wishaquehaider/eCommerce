@@ -4,11 +4,11 @@ import TrendingProducts from '../TrendingProducts/TrendingProducts'
 
 export default function SuggestedSeller() {
   return (
-    <div className=''>
+    <div className='w-[40vh] mt-[36px]'>
         <div className='text-[16px] font-[500] '>
         Suggested sellers
         </div>
-        <div className='flex justify-around bg-white shadow-md p-[8px] rounded-[8px] gap-[81px] mt-5'>
+        <div className='flex justify-between items-center bg-white w-[100%] shadow-md p-[8px] rounded-[8px]  mt-5'>
             <div className='flex justify-center items-center'>
                 <img src={seller1} alt="" /> &nbsp;
                 <span> Elizabith Lee</span>
@@ -19,7 +19,7 @@ export default function SuggestedSeller() {
                 </button>
             </div>
         </div>
-        <div className='flex justify-around bg-white shadow-md p-[8px] rounded-[8px] gap-[81px] mt-5'>
+        <div className='flex justify-between items-center bg-white w-[100%] shadow-md p-[8px] rounded-[8px]  mt-5'>
             <div className='flex justify-center items-center'>
                 <img src={seller1} alt="" /> &nbsp;
                 <span> Elizabith Lee</span>
@@ -30,7 +30,7 @@ export default function SuggestedSeller() {
                 </button>
             </div>
         </div>
-        <div className='flex justify-around bg-white shadow-md p-[8px] rounded-[8px] gap-[81px] mt-5'>
+        <div className='flex justify-between items-center  w-[100%] bg-white shadow-md p-[8px] rounded-[8px]  mt-5'>
             <div className='flex justify-center items-center'>
                 <img src={seller1} alt="" /> &nbsp;
                 <span> Elizabith Lee</span>

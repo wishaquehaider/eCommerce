@@ -5,9 +5,11 @@ import product from "../../../../accests/images/product.png";
 import chat from "../../../../accests/images/chat.svg";
 import forward from "../../../../accests/images/forward.svg";
 import bookmark from "../../../../accests/images/bookmark.svg";
+import PromocCraousel from '../PromocCraousel/PromocCraousel';
 
 export default function ProductCard() {
   return (
+    <div>
     <div className='flex justify-center'>
        <div className=" lg:w-[80%] md:w-[90%] w-[90%] bg-white h-fit shadow-md shadow-[rgba(0, 0, 0, 0.08)] rounded-xl py-5">
       <div className="flex items-center gap-2 justify-between px-[12px] pb-3">
@@ -48,6 +50,8 @@ export default function ProductCard() {
         <button className="lg:px-[5px]  w-[45%] md:px-[10px] px-5 py-2  bg-[#BF1017] rounded-lg text-[#FFF]">Buy Now</button>
       </div>
     </div>
+    </div>
+ 
     </div>
   )
 }
