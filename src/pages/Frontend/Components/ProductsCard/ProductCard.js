@@ -5,7 +5,6 @@ import product from "../../../../accests/images/product.png";
 import chat from "../../../../accests/images/chat.svg";
 import forward from "../../../../accests/images/forward.svg";
 import bookmark from "../../../../accests/images/bookmark.svg";
-import PromocCraousel from '../PromocCraousel/PromocCraousel';
 
 export default function ProductCard() {
   return (

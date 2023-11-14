@@ -2,7 +2,6 @@ import React from "react";
 import Topbar from "../Components/Topbar/Topbar";
 import Iconsbar from "../Components/IconsBar/Iconsbar";
 import HeaderBar from "../Components/HeaderBar/HeaderBar";
-import { Link } from "react-router-dom";
 import balance from "../../../accests/images/balanceIcon.svg";
 import payment from "../../../accests/images/paynment.svg";
 import contact from "../../../accests/images/contact.svg";
@@ -33,7 +32,6 @@ export default function Settings() {
       <SettingCard herf="/" text="More information" icon={moreinfo}/>
       <SettingCard herf="/" text="Bids Won" icon={bid}/>
       <SettingCard herf="/" text="Logout" icon={logout}/>
-
         </div>
       </div>
     </>
